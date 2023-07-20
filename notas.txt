@@ -1,0 +1,66 @@
+//instalar django 
+	pip install Django
+
+//creacion de proyecto Django
+	django-admin startproject nombre_proyecto
+//crear app django ( En Django, los proyectos están compuestos por aplicaciones. )
+	python3 manage.py startapp artista
+    //agrega app en setting.py  
+        INSTALLED_APPS = [
+               'django.contrib.staticfiles',
+                'artista' #aggregando app
+        ]
+//correr servidor virtual (estar parado dentro de carpeta donde se encuentra manage.py)
+    python3 manage.py runserver
+
+//instalar y conectar  mysql
+    pip3 install pyMySQL
+    //en archuivo __init__.py de la app
+        import pymysql
+        pymysql.install_as_MySQLdb() #sirve para crear interaccion co la base de datos
+    //credenciales de bade en setting.py
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME':'persoanajesDBall',
+                'USER': 'root',
+                'PASSWORD':'',
+                'HOST':'localhost',
+                'PORT':'3306'
+
+            }
+        }
+//para usar imagenes en proyecto
+    pip3 install pillow
+
+
+//migraciones python
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+
+//config de administrador Django
+	python3 manage.py createsuperuser (tcljohan+,soytcljohant)
+	correr de nuevo servidor
+    en web = http://127.0.0.1:8000/admin/
+
+//neceario para mandar y observar imagenes en html de proyecto
+    //dentro de seting.py
+    import  os
+    MEDIA_ROOT =os.path.join(BASE_DIR,'')
+    MEDIA_URL = '/imagenes/'
+    //en urls.py de app
+    from django.conf import settings
+    from django.contrib.staticfiles.urls import static
+    urlpatterns = [
+    ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+//para usar archivos CSS,JS,imagenes
+    crear carpeta static u otro name en raiz de app (dentro iran las carpetas y archivos js,img,css)
+    //en archivo settings.py
+        import os
+        STATICFILES_DIRS = (os.path.join(BASE_DIR,'nombre_app/nombre_carpeta_creada'),)
+        dentro de html usar:
+        {% load static %} al inixio de archivo
+        ejemplo link = <link rel="stylesheet" type="text/css" href="{% static 'CSS/form.css' %}">
+
+recomendaciones
+ recuerda agrega app en setting.py 

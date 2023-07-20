@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block titulo%} editar personaje {%endblock%}
+
+
+{%block contenido%}
+<div class="card">
+    <div class="card-header">
+        EditAR PERSONAJE
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos personaje</h4>
+        {%include 'personajeDBall/form.html'%}
+    </div>
+    <div class="card-footer text-muted">
+  
+    </div>
+</div>
+{%endblock%}

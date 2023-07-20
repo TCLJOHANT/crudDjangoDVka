@@ -1,0 +1,51 @@
+{%extends "base.html"%}
+{%block titulo%} lIST PERSONAJES {%endblock%}
+
+
+{%block contenido%}
+ <div class="card">
+    <div class="card-header">
+        <a name="" id="" href="{%url 'crear'%}" class="btn btn-success" href="" role="button">Crear personaje</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Personajes</h4>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Raza</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for personaje in personajes%}
+                    <tr class="">
+                        <td >{{personaje.id}}</td>
+                        <td>{{personaje.nombre}}</td>
+                        <td>
+                            <img src="{{personaje.imagen.url}}" height="100px" /> 
+                        </td>
+                        <td>{{personaje.raza}}</td>
+                        <td>{{personaje.descripcion}}</td>
+                        <td>
+                            <a name="" id="" href="{%url 'editar' personaje.id%}" class="btn btn-info" role="button">Editar</a>
+                            <a name="" id="" href="{%url 'eliminar' personaje.id%}" class="btn btn-danger" role="button">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div> 
+{%endblock%}
